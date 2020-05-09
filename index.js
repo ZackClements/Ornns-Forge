@@ -20,7 +20,7 @@ bot.on('message', msg =>{
     if(content[0] === "!Ornn!"){
 
         msg.channel.send({files: ['./images/Ornn.jpg']});
-        msg.channel.send("Name's Ornn. No further pleasantries needed.");
+        msg.channel.send("Name's Ornn. No further pleasantries needed. ");
     }
     if(content[0] === "summoner"){
         var summonerName = content[1];
