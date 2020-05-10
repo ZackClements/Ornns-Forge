@@ -2,21 +2,16 @@
 let LeagueAPI = require('leagueapiwrapper');
 leagueAPIKey = "RGAPI-fc367ca4-0398-4ef4-8991-b72148520030";
 LeagueAPI = new LeagueAPI(leagueAPIKey, Region.NA);
-
 //let champName = require('./champions/championName.js');
+//const summoner = "Knighteray";
 
-
-/* Mastery data
-LeagueAPI.getSummonerByName(summoner)
+//Mastery data
+/*LeagueAPI.getSummonerByName(summoner)
 	.then(function(accountObj) {
 		// Returns a list of every single champion played by the account, along with mastery details
 		return LeagueAPI.getChampionMastery(accountObj);
 	})
-	.then(function(championMasteryList)
-	{
-		var champId = championMasteryList[0]['championId'];
-		console.log(champName.getChampName(champId));
-	})
+	.then(console.log)
 	.catch(console.log);
 */
 /* Use this to get rank information (rank, lp, wins/losses, etc..)
