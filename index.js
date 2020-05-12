@@ -1,32 +1,39 @@
 //Discord Bot
 const Discord = require('discord.js');
 const bot = new Discord.Client();
-const token = 'NzA1MjIxMTQ5MTkzMTQyMjcz.Xqoj0Q.7EpgINgGEnCZ6Taxwm1Li08x8cM';
-//const test = require('./Test/test.js'); UNCOMMENT WHEN ALL CONSOLE.LOG IS REMOVED FROM TEST.JS
-//const champion = require('./champions/champion.json'); IF PULLING FROM JSON UNCOMMENT
-const championName = require('./champions/championName.js');
+const token = 'XXXXXXXXXXX';
+const championName = require('./functions/champName.js');
+
 
 //League API
 let LeagueAPI = require('leagueapiwrapper');
-leagueAPIKey = "RGAPI-0458aa9b-0d48-4d43-b1d9-12a76b683b41";
+leagueAPIKey = "XXXXXXXXXXXXXXXXX";
 LeagueAPI = new LeagueAPI(leagueAPIKey, Region.NA);
 
+//Confirms bot is online
 bot.on('ready',() =>{
     console.log('Bot is online');
 })
+
 bot.on('message', msg =>{
-    const content = msg.content.split("! ");
+    const content = msg.content.split("! "); //Separates commands from arguments
+
+    //Base command
     if(content[0] === "!Ornn!"){
 
         msg.channel.send({files: ['./images/Ornn.jpg']});
         msg.channel.send("Name's Ornn. No further pleasantries needed. ");
     }
-    if(content[0] === "summoner"){ //summoner! command
+
+    //Summoner command, input username outputs summoner level, rank (lp), and top 3 highest mastery champions
+    if(content[0] === "summoner"){
         const summonerName = content[1];
+
         LeagueAPI.getSummonerByName(summonerName) //Using someones username as a parameter, outputs basic account info
             .then(function(accountObject){
                 msg.channel.send("Here is " + "**" + summonerName + "**" + "'s basic information: ")
                 msg.channel.send("Summoner Level: " + accountObject['summonerLevel']);
+
                 LeagueAPI.getLeagueRanking(accountObject) //Uses summoner ID (found above) to ouput basic rank info
                     .then(function(res){
                         const rank = String(res[0]['tier']).toLowerCase(); //Turns TIER into tier.
@@ -34,9 +41,11 @@ bot.on('message', msg =>{
                         msg.channel.send("Rank: " + capitalizeString + " " + res[0]['rank']);
                         //Shout out to Sperlmutter for helping me out!
                     })
+
                 return LeagueAPI.getChampionMastery(accountObject) //Uses summonerID (found above) to return champion mastery data
                 .then(function(championMasteryList){
-                        msg.channel.send("Top 3 champions:");
+                        msg.channel.send("Top 3 functions:");
+
                         for (let i = 0; i < 3; i++){
                             const champId = championMasteryList[i]['championId'];
                             const champLevel = championMasteryList[i]['championLevel'];
@@ -48,5 +57,7 @@ bot.on('message', msg =>{
             .catch(console.log);
     }
 })
+
+
 bot.login(token);
 

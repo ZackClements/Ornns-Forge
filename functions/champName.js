@@ -1,8 +1,5 @@
-//const champion = require('./champion.json');
-module.exports = {
 //This function takes parameter champId (int) and returns champion name
-    getChampName(champId)
-{
+function getChampName(champId) {
     switch (champId) {
         case 266:
             return "Aatrox";
@@ -446,7 +443,9 @@ module.exports = {
             break;
         case 875:
             return "Sett";
-        }
     }
 }
+
+
+module.exports = { getChampName }
 
