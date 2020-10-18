@@ -1,6 +1,7 @@
-# Ornn's Forge
+# Ornn's Forge - archived 
 
-Discord bot that uses [MundoScript](https://github.com/LionelBergen/MundoScript) to return Riot API data
+Discord bot that uses [MundoScript](https://github.com/LionelBergen/MundoScript) to return Riot API data.
+
 
 # Commands
 
